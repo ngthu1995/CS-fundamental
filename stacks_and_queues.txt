@@ -1,0 +1,42 @@
+The main difference between the stack and the queue is that stack arranges elements in LIFO, while the queue arranges elements in FIFO.
+
+The similarities between stack and queue is that they are all a collection of objects which are arranged in an ordered-line.
+
+UNDO & REDO: we can use stack data structure since both actions require the latest action we take => LIFO.
+
+
+reverseStr = (str) => {
+  return joinArr = str.split('').reverse().join('')
+}
+
+
+deleteQueue = (queue) => {
+  let last ='';
+  queue.forEach( list => {
+    if (list !== queue[queue.length -1] ) {
+    var item = queue.shift();
+    queue.push(item)
+    } else {
+      last = queue.shift()
+    } 
+  })
+  return last;
+}
+
+
+class Queue  {
+  constructor (item) {
+    this.item = item;
+  }
+
+  enqueue(item) {
+        this.items.push(item)
+        return this.item;
+    }
+
+dequeue() {
+        this.items.shift();
+        return this.item;
+    }
+
+}
