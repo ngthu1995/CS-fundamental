@@ -1,0 +1,65 @@
+1. Pros of linked list: 
+    dynamic size, efficient insertions and deletions, no waste of memory
+   
+   Cons of linked list: 
+   no random access, sequential access is slow.
+
+2. Example of linked list: train.
+
+
+FUNCTION LinkedList () {
+    SET node = {
+        value: element,
+        current node = head
+    }
+    IF the head does not exist
+        THEN SET head to node
+    ELSE 
+        SET current node to head
+        SET current.next to node
+}
+
+function LinkedList () {
+    var length = 0;
+    var head = null;
+
+    var Node = function(element) {
+        this.element = element;
+        this.next = null;
+    }
+
+    this.size = function(){
+    return length;
+    };
+
+    this.removeDuplicate = function(element) {
+        var currentNode = element;
+
+        while (currentNode && currentNode.next) {
+            if (currentNode.element === currentNode.next.element) {
+                currentNode.next = currentNode.next.next;
+            } else {
+                currentNode = currentNode.next;
+            }
+        }
+        return element;
+    }
+
+    this.reverse = function (head) {
+        var prev = null;
+        var currentNode = head;
+
+        while (currentNode !== null) {
+            var next = currentNode.next;
+            currentNode.next = prev;
+            prev = currentNode;
+            currentNode = next;
+        }
+        head = prev;
+        return head;
+}
+
+
+
+
+
