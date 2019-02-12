@@ -13,155 +13,178 @@ The name and location of every company in a given city: hash table
 All of the books checked out from a library by a particular individual: hash table
 The primary and secondary phone numbers for a contact: object
 
-6. var hash = (str, max) => {
-        var hash = 0;
-        for (var i = 0; i < str.length; i++) {
-            hash += str.charCodeAt(i)
+6. 
+
+var hash = (string, max) => {
+  var hash = 0;
+  for (var i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+};
+
+let HashTable = function() {
+  let storage = [];
+  const storageLimit = 25;
+
+  this.print = function () {
+    console.log(storage);
+  }
+
+  this.add = (number, {name, address}) => {
+    var index = hash(number, storageLimit);
+    console.log(index);
+    if (storage[index] === undefined) {
+      storage[index] = [number, {name, address}]
+    } else {
+      var inserted = false;
+      for (var i = 0; i< storage[index].length; i++) {
+        if (storage[index][i][0] === number) {
+          storage[index][i][1].name = name;
+          storage[index][i][1].address = address;
+          inserted = true;
         }
+      }
+      if (!inserted) {
+        storage[index].push([number, {name, address}]); 
+      }
+    }
+  }
+
+  this.lookup = (number) => {
+    var index = hash(number, storageLimit);
+    console.log(index)
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === number) {
+          var profile = {name: storage[index][i][1].name, number: storage[index][i][0], address: storage[index][i][1].address }
+          return profile;
+        }
+      }
+    }
+  }
+}
+
+var client = new HashTable();
+client.add(9143, {name: 'Tina', address:'3201 Paul Dr'});
+client.add(914914, {name: 'Hina', address:'3201 Paul Dr'});
+console.log(client.lookup(914914));
+
+
+
+7. 
+var hash = (str, max) => {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash += str.charCodeAt(i)
+    }
     return hash % max;
-    };
+}
 
-    let HashTable = function() {
-        let storage = [];
-        const storageLimit = 10;
+let HashTable  = function() {
+    let inventory = [];
+    const inventoryLimit = 90;
 
-        this.print = function () {
-            console.log(storage);
-        }
-
-        this.add = (number, name, address) => {
-            var index = hash(number, storageLimit);
-            if (storage[index] === undefined) {
-                storage[index] = [number, name, address]
-            } else {
-                var inserted = false;
-                for (var i =0; i< storage[index].length; i++) {
-                    if (storage[index][i][0] === number) {
-                        storage[index][i][1] = name;
-                        storage[index][i][2] = address;
-                        inserted = true;
-                    }
-                }
-                if (!inserted) {
-                    storage[index].push([number, name, address]); 
-                }
-            }
-        }
-
-        this.lookup = (number) => {
-            var index = hash(number, storageLimit);
-            if (storage[index] === undefined) {
-                return undefined;
-            } else {
-                for (var i = 0; i < storage[index].length; i++) {
-                    if (storage[index][i][0] === number) {
-                        var profile = {name: storage[index][i][1], number: storage[index][i][0], address: storage[index][i][2]}
-                        return profile;
-                    }
-                }
-            }
-         }
-    }
-    
-    var client = new HashTable();
-    customers.add(9144410913, 'Tina', '3201 Paul Dr');
-    console.log(customers.lookup(9144410913));
-
-    7. 
-     var hash = (str, max) => {
-        var hash = 0;
-        for (var i = 0; i < str.length; i++) {
-            hash += str.charCodeAt(i)
-        }
-        return hash % max;
+    this.print = () => {
+        console.log(inventory);
     }
 
-    let HashTable  = function() {
-        let inventory = [];
-        const inventoryLimit = 90;
-
-        this.print = () => {
-            console.log(inventory);
-        }
-
-        this.add = (item, quantity) => {
-            var index = hash(item, inventoryLimit);
-            if (inventory[index] === undefined) {
-                inventory[index] = [item, quantity]
-            } else {
-                var inserted = false;
-                for (var i =0; i< inventory[index].length; i++) {
-                    if (inventory[index][i][0] === item) {
-                        inventory[index][i][1] = quantity;
-                        inserted = true;
-                    }
-                }
-                if (!inserted) {
-                    inventory[index].push([item, quantity]); 
+    this.add = (item, quantity) => {
+        var index = hash(item, inventoryLimit);
+        if (inventory[index] === undefined) {
+            inventory[index] = [item, quantity]
+        } else {
+            var inserted = false;
+            for (var i =0; i< inventory[index].length; i++) {
+                if (inventory[index][i][0] === item) {
+                    inventory[index][i][1] = quantity;
+                    inserted = true;
                 }
             }
+            if (!inserted) {
+                inventory[index].push([item, quantity]); 
+            }
         }
+    }
 
-        this.delete = (item) => {
-            var index = hash(item, invetoryLimit);
-            if (inventory[index] === undefined) {
-                return undefined;
-            } else if (inventory[index].length === 1 && inventory[index][0][0] === item ) {
-                delete inventory[index];
-            } else {
-                for (var i = 0; i < inventory[index].length; i++) {
-                    if (inventory[index][0][0] === item) {
-                        delete inventory[index][i];
-                    }
+    this.delete = (item) => {
+        var index = hash(item, inventoryLimit);
+        if (inventory[index] === undefined) {
+            return undefined;
+        } else if (inventory[index].length === 1 && inventory[index][0][0] === item ) {
+            delete inventory[index];
+        } else {
+            for (var i = 0; i < inventory[index].length; i++) {
+                if (inventory[index][0][0] === item) {
+                    delete inventory[index][i];
                 }
             }
         }
     }
+
+    this.search = function(item) {
+    var index = hash(item, invetoryLimit);
     
-    
-    var candy = new HashTable();
-    candy.add('sweet', 3)
-    console.log(candy.print())
+    if(inventory[index] === undefined) {
+      console.log("Not Found item");
+    } else {
+      for (var i = 0; i < inventory[index].length; i ++) {
+        if (inventory[index][i][0] === item) {
+          console.log(inventory[index][i][1]);
+        }
+      }
+    }
+}
+}
+
+var candy = new HashTable();
+candy.add('sweet', 3)
+console.log(candy.print())
 
 8.
-    var hash = function (str, max) {
-        var hash = 0;
-        for (var i =0; i < str.length; i++) {
-            hash += str.charCodeAt(i);
-        }
-        return hash % max;
+var hash = function (str, max) {
+    var hash = 0;
+    for (var i =0; i < str.length; i++) {
+        hash += str.charCodeAt(i);
     }
+    return hash % max;
+}
 
-    class Newspaper {
-        constructor() {
-        this.storage = [];
-        this.storageLimit = 40;
-    }
+class Newspaper {
+    constructor() {
+    this.storage = [];
+    this.storageLimit = 40;
+}
 
-    add(publisher, publicationDate) {
-        let key = publisher + publicationDate;
-        let index = hash(key, this.storageLimit);
-        let data = [publisher, publicationDate];
-        if (this.storage[index] === undefined) {
-            this.storage[index] = [ ];
-        } 
+add(publisher, publicationDate) {
+    let key = publisher + publicationDate;
+    let index = hash(key, this.storageLimit);
+    let data = [publisher, publicationDate];
+    if (this.storage[index] === undefined) {
         this.storage[index].push(data);
-        }
-
-    search(publisher, publicationDate) {
-        let key = publisher + publicationDate;
-        let index = hash(key, this.storageLimit);
-        let result = [];
-        
-        if (!this.storage[index]) { 
-            return 'No results were found.' 
-        }
-
-        this.storage[index].forEach(entry => {
-            if (entry[0] === publisher && entry[1] === publicationDate) { 
-                result.push(entry); 
-            }
-        })
-        return result;
     }
+}
+
+search(publisher, publicationDate) {
+    let key = publisher + publicationDate;
+    let index = hash(key, this.storageLimit);
+    let result = [];
+    
+    if (!this.storage[index]) { 
+        return 'No results were found.' 
     }
+
+    this.storage[index].forEach(entry => {
+        if (entry[0] === publisher && entry[1] === publicationDate) { 
+            result.push(entry); 
+        }
+    })
+    return result;
+}
+}
+
+var abc = new Newspaper();
+abc.add('times', '1995');
+abc.search('times')
