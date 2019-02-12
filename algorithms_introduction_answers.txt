@@ -1,0 +1,44 @@
+1. 
+FUNCTION makeCoffes 
+    IF coffee is whole bean 
+        THEN ground whole bean coffee
+    END IF
+    PLACE coffee into basket
+    ADD water to the pot
+    PRESS start button
+END FUNCTION;
+
+FUNCTION washDishes 
+    IF wife is mad at husband
+        THEN husband washes dishes
+
+    TURN hot water on
+
+    GRAB soap and sponge
+
+    DO scrub dishes
+    DO rinse with water
+    WHILE the dishes are dirty
+
+    THEN place on the rack
+
+    TURN water off
+END FUNCTION
+
+FUNCTION bakeBrownie
+    PREHEAT oven to 350F
+    WHISK flour, sal, cocoa powder
+    STIR with sugar, eaggs, vanilla.
+    PLACE in a greased pan
+    BAKE for 20 minutes.
+    TURN off the oven
+    TAKE the brownie out.
+END FUNCTION
+
+2. Well-known algorithm case for big companies: 
+    Instagram: the suggested photos.
+    Walmart: the lowest prices for individual purchase.
+    Costco: the best prices for warehouse sale with membership.
+
+3. An efficient algorithm: less time-consuming, minimal memory usage, relevant result.
+   An inefficient algorithm: more time-consuming, more memory usage, irrelevant result.
