@@ -1,0 +1,59 @@
+1. Binary tree is a tree data structure with a root node and have up to 2 child nodes, which each has up to 2 child nodes and so on.
+
+2. Heuristics are guesses that an algorithm makes to solve a complex problem sooner by sacrificing accruracy.
+
+3. Another problem besides the shortest-path problem that requires the use of heuristics is the possible educated guess.
+
+4. Depth-first-search: starts at the root and explore as far as possible along each branch before backtracking.
+   Breadth-first-search: BFS starts at the tree root and explore the neighbor nodes first, before moving to the next level neighbors.
+
+5. An undirected, a-cyclic, unweighted graph puts nodes together in unideritional flow like a cirle.
+
+6. A binary search tree is directed, cyclic and unweighted.
+
+
+
+1. To determine whether a node belongs to the tree or not, we start with comparing it with the root, if it's greater, travel right, otherwise goes left, and so on.
+
+function search (nodeRoot, item) {
+  if (nodeRoot === null) {
+    return null;
+  }
+  if (nodeRoot === item) {
+    return nodeRoot;
+  } else if (nodeRoot.data < item) {
+    return search(nodeRoot.right, item);          
+  } else {
+    return search(nodeRoot.left, item);
+  }
+}
+
+2. 
+function findDistance (root, n1, n2) {
+  if (root === null || n1 === n2) {
+    return -1;
+  } 
+  
+  distance.left = findDistance(root.left, n1, n2);
+  distance.right = findDistance(root.right, n1, n2);
+
+  if (distance.left > 0 && distance.right > 0){
+    return distance.left + distance.right;
+  }
+  if (distance.left > 0 && distance.right > 0){
+    return distance.left;
+  }
+  if (distance.right > 0 && root === n1 || n2){
+    return distance.right;
+  }
+  if (distance.left === 0 && distance.right === 0){
+    if(root !== n1 || n2){
+      return 0;
+    }
+    if (root == n1 || n2){
+      return 1;
+    }
+  } else {
+      return max(distance.left, distance.right) + 1;
+  }
+}
