@@ -1,0 +1,62 @@
+1. Time complexity is the metric measures how long it takes to execute a function. It describes how efficent an algorithm can be.
+
+2. Runtime is the physical time duration of algorithm.
+
+3. Runtime of algorithm is calculated by summing up all the instructions it contains, then simply to the largest term and drop any constants.
+
+4. 6 types of algorithm growth rates: 
+Constant growth rate: always executes in the same amount of time regardless of the size of the input data set.
+
+Logarithmic growth rate: halves the dataset with each iteration (O(log n))
+
+Linear growth rate: grow linearly and in direct proportion to the size of the input date set (0(n)).
+
+Log-linear growth rate: halves the data each time for each of n times (O(n log n)).
+ 
+Quadratic Growth Rate: is directly proportional to the square of the size of the input data set (O(n^2)).
+6. 
+Exponential Growth Rate: doubles with each addition to the input data set (O(2^n)).
+
+Cubic Growth Rate O(n3)
+
+5. Example of constant growth rate in real life: every day, roughly 353,000 babies are born around the world. No matter it is Monday or Sunday, the amount of new-born babies remain almost the same.
+
+6. 
+FUNCTION linearSearch(array, target)
+ FOR each number in the array (A)
+   IF number = target THEN (B)
+     RETURN true (C)
+   END IF
+ END FOR
+ RETURN false
+END FUNCTION
+
+Time Complexity = (A) + (B) + (C) = n + 1 + 1 = n +2 => O(n)
+
+7.
+FUNCTION foo(array)
+ FOR each number in the array (A)
+   FOR each number in the array (B)
+     print "Hello" (C)
+   END FOR
+ END FOR
+END FUNCTION
+
+Time Complexity = (A) * (B) + (C) = n * n + 1 = n^2 + 1 => O(n^2) 
+
+8. 
+FUNCTION fibonacci(number)
+ IF number < 1 THEN 
+   ERROR
+ ELSE IF number = 1 or 2 THEN 
+   RETURN 1
+ ELSE
+   CALL fibonacci WITH number - 2 RETURNING twoBack 
+   CALL fibonacci WITH number - 1 RETURNING oneBack 
+   RETURN twoBack + oneBack 
+ END IF
+END FUNCTION
+
+Time Complexity = O(2^n)
+ 
+9. The most efficent growth rate is linear one since it grows proportinal with the size of input.
