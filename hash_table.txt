@@ -24,54 +24,63 @@ var hash = (string, max) => {
 };
 
 let HashTable = function() {
+
   let storage = [];
-  const storageLimit = 25;
-
-  this.print = function () {
-    console.log(storage);
+  const storageLimit = 14;
+  
+  this.print = function() {
+    console.log(storage)
   }
 
-  this.add = (number, {name, address}) => {
-    var index = hash(number, storageLimit);
+  this.add = function(key, value) {
+    var index = hash(key, storageLimit);
     console.log(index);
-    if (storage[index] === undefined) {
-      storage[index] = [number, {name, address}]
-    } else {
-      var inserted = false;
-      for (var i = 0; i< storage[index].length; i++) {
-        if (storage[index][i][0] === number) {
-          storage[index][i][1].name = name;
-          storage[index][i][1].address = address;
-          inserted = true;
-        }
-      }
-      if (!inserted) {
-        storage[index].push([number, {name, address}]); 
-      }
+    if (storage[index]) {
+      let found = storage[index].findIndex((item) => {
+        return item === key;
+      })
+      if (found !== -1) {
+        storage[index][found + 1] = value; 
+      } else {
+        storage[index].push(key, value)
+      } 
+    } else storage[index] = [key, value]
+  };
+
+  this.remove = function(key) {
+    var index = hash(key, storageLimit);
+    if (storage[index]) {
+      let found = storage[index].findIndex((item) => {
+        item === key
+      })
+      if (!found) {t
+      } else delete storage[index][found, (found +1)] 
     }
-  }
+  };
 
-  this.lookup = (number) => {
-    var index = hash(number, storageLimit);
-    console.log(index)
-    if (storage[index] === undefined) {
-      return undefined;
-    } else {
-      for (var i = 0; i < storage[index].length; i++) {
-        if (storage[index][i][0] === number) {
-          var profile = {name: storage[index][i][1].name, number: storage[index][i][0], address: storage[index][i][1].address }
-          return profile;
-        }
+  this.lookup = function(key) {
+    var index = hash(key, storageLimit);
+    if (storage[index]) {
+      let found = storage[index].findIndex((item) => {
+        item === key
+      })
+      if (!found) {
+        console.log('Not valid')
+      } else {
+        console.log(storage[index][found + 1])
       }
-    }
-  }
-}
+    } else console.log('Not valid.')
+  };
 
-var client = new HashTable();
-client.add(9143, {name: 'Tina', address:'3201 Paul Dr'});
-client.add(914914, {name: 'Hina', address:'3201 Paul Dr'});
-console.log(client.lookup(914914));
+};
 
+let ht = new HashTable();
+ht.add('91', {name: 'Tina', adress:'3201 Paul Dr'});
+ht.add('94', {name: 'James', address:'3201 Paul Dr'});
+ht.add('99', {name: 'Sunny', address:'3201 Paul Dr'});
+ht.add('94', {name: 'Suzy', address:'3201 Paul Dr'});
+console.log(ht.lookup('91'))
+ht.print();
 
 
 7. 
@@ -94,7 +103,7 @@ let HashTable  = function() {
     this.add = (item, quantity) => {
         var index = hash(item, inventoryLimit);
         if (inventory[index] === undefined) {
-            inventory[index] = [item, quantity]
+            inventory[index] = [[item, quantity]]
         } else {
             var inserted = false;
             for (var i =0; i< inventory[index].length; i++) {
@@ -125,7 +134,7 @@ let HashTable  = function() {
     }
 
     this.search = function(item) {
-    var index = hash(item, invetoryLimit);
+    var index = hash(item, inventoryLimit);
     
     if(inventory[index] === undefined) {
       console.log("Not Found item");
@@ -157,34 +166,36 @@ class Newspaper {
     this.storage = [];
     this.storageLimit = 40;
 }
+  
+print() {
+  console.log(this.storage)
+}  
 
-add(publisher, publicationDate) {
+add(publisher, publicationDate, arr) {
     let key = publisher + publicationDate;
     let index = hash(key, this.storageLimit);
-    let data = [publisher, publicationDate];
+    console.log(index);
+    let data = [publisher, publicationDate, arr];
     if (this.storage[index] === undefined) {
-        this.storage[index].push(data);
+        this.storage[index] = (data);
     }
+  
+  
 }
 
 search(publisher, publicationDate) {
     let key = publisher + publicationDate;
     let index = hash(key, this.storageLimit);
     let result = [];
-    
+    console.log(this.storage[index][2]);
     if (!this.storage[index]) { 
         return 'No results were found.' 
+    } else {
+      return this.storage[index][2];
     }
-
-    this.storage[index].forEach(entry => {
-        if (entry[0] === publisher && entry[1] === publicationDate) { 
-            result.push(entry); 
-        }
-    })
-    return result;
-}
+  }
 }
 
 var abc = new Newspaper();
-abc.add('times', '1995');
-abc.search('times')
+abc.add('times', '1995', ['Love']);
+

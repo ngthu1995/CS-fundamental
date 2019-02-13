@@ -19,8 +19,7 @@ Exponential Growth Rate: doubles with each addition to the input data set (O(2^n
 
 Cubic Growth Rate O(n3)
 
-5. Example of constant growth rate in real life: every day, roughly 353,000 babies are born around the world. No matter it is Monday or Sunday, the amount of new-born babies remain almost the same.
-
+5. Example of linear growth rate in real life: every day, roughly 353,000 babies are born around the world.
 6. 
 FUNCTION linearSearch(array, target)
  FOR each number in the array (A)
