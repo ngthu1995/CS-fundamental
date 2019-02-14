@@ -1,0 +1,51 @@
+1. Real life scenario using linear search: a grocery list of items you want to buy.
+
+2. Reallife scenratio using binary search: search a specific term in dictionary.
+
+3. Given the alphabetically sorted collection in this checkpoint, it would take 7 iterations to find the value G using linear search
+
+4. Given the alphabetically sorted collection in this checkpoint, it would take 3 iterations to find the value G using binary search.
+
+5. Given an unsorted collection of a million items, we have to use linear search since binary search is only available when the collection is sorted.
+
+6. Given a sorted collection of a million items, we would use binary search since it would take less iterations than linear search.
+
+
+1. 
+
+FUNCTION lookUpWord (dictionary, word) 
+ 	SET firstword and lastword;       
+	IF lastword < firstword THEN
+            RETURN word "does not exist"
+
+        SET midWord to ROUNDDOWN((lastWord-firstWord) / 2) + firstWord
+
+        IF dictionary[midWord] = word THEN
+            RETURN midWord
+
+        ELSE IF word < dictionary[midWord].word THEN
+            CALL lookUpWord WITH dictionary, word, firstWord, midWord - 1 RETURNING result
+            RETURN result
+
+        ELSE
+            CALL lookUpWord WITH dictionary, word, midWord + 1, lastWord RETURNING result
+            RETURN result
+
+    END IF        
+            
+    END FUNCTION
+
+
+2.  
+var fishLookUp = (fishTank, fish) => {
+    const found = fishTank.find( fish1 => {
+        return fish1 === fish
+    }) 
+    if (found) {
+      return true;
+    } else return false;
+
+}
+
+var tank = ["goldfish", "goldfish", "one fish", "blue fish", "white-spotted goldfish", "Nemo"];
+fishLookUp(tank, "blue fish")
