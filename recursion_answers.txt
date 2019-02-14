@@ -1,0 +1,38 @@
+1. Iteration : the technique of utilizing a loop to repeat a process.
+Recursion: The technique where a procedure calls itself with parameters incrementally moving toward one of the base cases.
+
+2. Algorithms that are commonly implemented with recursion: search, sort (binary search, merge sort, quick), factorial and Fibonacci sequence.
+
+3. When to use recursion: the solution is a combination of the result of smaller sub problems.
+
+When not to use recursion: it would be more simple to use interation.
+
+4. In both cases, the algorithms give you the desired result; however, the maximum function looks much neater and cleaner with iteration, while Fibonacci functions seems to work better with recursion.
+
+5. 
+FUNCTION countItems(array1 , array2) {
+    let count = 0;
+    for (let i=0; i <array1.length; i++) {
+        count++;
+    for (var j = 0; j < arr2.length; j++{
+    count ++;
+}
+countItems(arr1, arr2)
+
+
+6. function checkPalindrome (string) {
+  if (string.endsWith(string.charAt(0))) {
+      var newString = string.slice(1, -1)
+      console.log(newString)
+      if (newString.length > 1) {
+        checkPalindrome(newString);
+      }
+      return true;
+  } else return false;
+} 
+
+checkPalindrome('racecar')
+
+7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". It happens because recursion is calling itself, which is a Google joke.
+
+
