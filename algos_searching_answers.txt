@@ -13,28 +13,25 @@
 
 1. 
 
-FUNCTION lookUpWord (dictionary, word) 
- 	SET firstword and lastword;       
-	IF lastword < firstword THEN
-            RETURN word "does not exist"
+function lookUp(arr, word) {
+        let left = 0;
+        let right = arr.length - 1;
 
-        SET midWord to ROUNDDOWN((lastWord-firstWord) / 2) + firstWord
+        while (left <= right) {
+            const mid = Math.round((right - left) / 2) + left;
+            if (arr[mid] < word) {
+                left = mid + 1;
+            } else  if (arr[mid] > word) {
+                right = mid - 1;
+            }else{
+                return arr[mid] +  " is the " + ( mid + 1) + "rd word in the list."
+            }           
+        }
+        return word + ` is not in the list.`;
+    }
 
-        IF dictionary[midWord] = word THEN
-            RETURN midWord
-
-        ELSE IF word < dictionary[midWord].word THEN
-            CALL lookUpWord WITH dictionary, word, firstWord, midWord - 1 RETURNING result
-            RETURN result
-
-        ELSE
-            CALL lookUpWord WITH dictionary, word, midWord + 1, lastWord RETURNING result
-            RETURN result
-
-    END IF        
-            
-    END FUNCTION
-
+var words = ["Air", "Apple", "Bobcat", "Can", "Dice", "Destiny"];
+console.log(lookUp(words, "Bobcat"));
 
 2.  
 var fishLookUp = (fishTank, fish) => {
