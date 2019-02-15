@@ -198,4 +198,5 @@ search(publisher, publicationDate) {
 
 var abc = new Newspaper();
 abc.add('times', '1995', ['Love']);
+abc.add('post', '1996', ['Life']);
 
