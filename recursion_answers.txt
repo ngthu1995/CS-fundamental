@@ -10,14 +10,15 @@ When not to use recursion: it would be more simple to use interation.
 4. In both cases, the algorithms give you the desired result; however, the maximum function looks much neater and cleaner with iteration, while Fibonacci functions seems to work better with recursion.
 
 5. 
-FUNCTION countItems(array1 , array2) {
-    let count = 0;
-    for (let i=0; i <array1.length; i++) {
-        count++;
-    for (var j = 0; j < arr2.length; j++{
-    count ++;
+function countItems(arr){
+  var count = 0;
+  for(var i in arr){
+    count+= countItems(arr[i])? countItems(arr[i]) : 1;
+  }
+  return count;
 }
-countItems(arr1, arr2)
+arr1 = [[1,2],4, [[4,8]]]
+countItems(arr1)
 
 
 6. function checkPalindrome (string) {
