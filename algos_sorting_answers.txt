@@ -1,0 +1,52 @@
+1. Pseudocode for bubble sort: 
+FUNCTION bubbleSort (collection) 
+
+REPEAT
+    SET swap to false
+
+FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+    IF collection[i] > collection[i + 1] THEN
+        SET tem to collection[i]
+        SET collection[i] = collection[i+1]
+        SET collection[i + 1] = tem
+        SET swap to true
+    END IF
+END FOR
+UNTIL swap is false
+
+RETURN collection
+END FUNCTION
+
+2. Pseudocode for quicksort: 
+FUNCTION partitionFunc(left, right, pivot)
+   leftPointer = left
+   rightPointer = right - 1
+
+   WHILE True do
+      WHILE A[++leftPointer] < pivot do
+         //do-nothing            
+      END WHILE
+		
+      WHILE rightPointer > 0 && A[--rightPointer] > pivot do
+         //do-nothing         
+      END WHILE
+		
+      IF leftPointer >= rightPointer
+         break
+      ELSE                
+         swap leftPointer,rightPointer
+      END IF
+		
+   END WHILE
+	
+   SWAP leftPointer,right
+   RETURN leftPointer
+	
+END FUNCTION
+
+3.
+Merge sort and quick sort are much more efficent than the others because they break collection into sub-collections, which potentially reduce the amount of iteration, performance and memory usage as well.
+
+4.
+Bucket sort, or bin sort, is a sorting algorithm distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm.
+
