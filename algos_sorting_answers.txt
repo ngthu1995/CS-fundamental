@@ -17,31 +17,38 @@ UNTIL swap is false
 RETURN collection
 END FUNCTION
 
-2. Pseudocode for quicksort: 
-FUNCTION partitionFunc(left, right, pivot)
-   leftPointer = left
-   rightPointer = right - 1
+2. Pseudocode for quickSort: 
+FUNCTION quicksort (low, high) 
+   IF (low < high)
+      j = patition(low, high)
+      quickSort(low, j)  
+      quickSort(j + 1, high)
+   END IF
 
-   WHILE True do
-      WHILE A[++leftPointer] < pivot do
-         //do-nothing            
+END FUNCTION
+
+FUNCTION patition (low, high)
+
+   SET pivot to array[low]
+   SET i to low
+   SET j to high
+
+   WHILE i < j
+      DO
+         INCREMENT i
+      WHILE array[i] <= pivot
       END WHILE
-		
-      WHILE rightPointer > 0 && A[--rightPointer] > pivot do
-         //do-nothing         
-      END WHILE
-		
-      IF leftPointer >= rightPointer
-         break
-      ELSE                
-         swap leftPointer,rightPointer
-      END IF
-		
+
+      DO
+         DECREMENT j
+      WHILE array[j] > pivot   
+
+      IF i < j
+         SWAP array[i] to array[j]
    END WHILE
-	
-   SWAP leftPointer,right
-   RETURN leftPointer
-	
+
+   SWAP (array[low], array[high])
+
 END FUNCTION
 
 3.
