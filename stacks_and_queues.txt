@@ -5,11 +5,26 @@ The similarities between stack and queue is that they are all a collection of ob
 UNDO & REDO: we can use stack data structure since both actions require the latest action we take => LIFO.
 
 
+1.
 reverseStr = (str) => {
   return joinArr = str.split('').reverse().join('')
 }
 
 
+2.
+<solution 1>
+deleteQueue = (queue) => {
+  let last ='';
+  let newQueue = []
+  queue.forEach( list => {
+    newQueue.push(list)
+  })
+  newQueue.pop();
+  return newQueue;
+}
+
+
+<solution 2>
 deleteQueue = (queue) => {
   let last ='';
   queue.forEach( list => {
@@ -23,6 +38,7 @@ deleteQueue = (queue) => {
   return last;
 }
 
+3.
 
 class Queue  {
   constructor (item) {
