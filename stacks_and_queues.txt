@@ -6,37 +6,33 @@ UNDO & REDO: we can use stack data structure since both actions require the late
 
 
 1.
-reverseStr = (str) => {
-  return joinArr = str.split('').reverse().join('')
+var reverse = (string)=>{
+  let stack = [];
+  let newString = '';
+  for (var i = 0; i<string.length; i++){
+      stack.push(string.charAt(i));
+  }
+while (!stack.length == 0){
+  newString +=stack.pop();
+}
+  return newString;
 }
 
+reverse('bloc')
 
 2.
-<solution 1>
-deleteQueue = (queue) => {
-  let last ='';
-  let newQueue = []
-  queue.forEach( list => {
-    newQueue.push(list)
-  })
-  newQueue.pop();
-  return newQueue;
+ pop = (arr) => {
+  let count = 0;
+
+  while (count < arr.length-1) {
+    arr.push(arr.shift())
+    count++;
+  }
+
+  return arr.shift();
 }
 
-
-<solution 2>
-deleteQueue = (queue) => {
-  let last ='';
-  queue.forEach( list => {
-    if (list !== queue[queue.length -1] ) {
-    var item = queue.shift();
-    queue.push(item)
-    } else {
-      last = queue.shift()
-    } 
-  })
-  return last;
-}
+pop([1,4,5])
 
 3.
 
@@ -46,13 +42,12 @@ class Queue  {
   }
 
   enqueue(item) {
-        this.items.push(item)
+        this.item.push(item)
         return this.item;
     }
 
 dequeue() {
-        this.items.shift();
-        return this.item;
+        this.item.shift();
     }
 
 }
