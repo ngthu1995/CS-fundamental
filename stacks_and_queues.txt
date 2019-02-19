@@ -12,11 +12,11 @@ var reverse = (string)=>{
   for (var i = 0; i<string.length; i++){
       stack.push(string.charAt(i));
   }
-while (!stack.length == 0){
-  newString +=stack.pop();
-}
-  return newString;
-}
+  while (!stack.length == 0){
+    newString +=stack.pop();
+  }
+    return newString;
+  }
 
 reverse('bloc')
 
@@ -36,18 +36,12 @@ pop([1,4,5])
 
 3.
 
-class Queue  {
-  constructor (item) {
-    this.item = item;
-  }
+CLASS QUEUE
+  FUNCTION enqueue(element)
+    THEN push (element)
+  END FUNCTION
 
-  enqueue(item) {
-        this.item.push(item)
-        return this.item;
-    }
-
-dequeue() {
-        this.item.shift();
-    }
-
-}
+  FUNCTION dequeue
+    THEN shift ()
+  END FUNCTION
+END CLASS
