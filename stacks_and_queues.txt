@@ -36,12 +36,21 @@ pop([1,4,5])
 
 3.
 
-CLASS QUEUE
-  FUNCTION enqueue(element)
-    THEN push (element)
-  END FUNCTION
+class Queue {
+  constructor (items) {
+    this.items = items;
+  }
 
-  FUNCTION dequeue
-    THEN shift ()
-  END FUNCTION
-END CLASS
+  enqueue (item) {
+    this.items.push(item);
+    return this.items;
+  }
+
+  dequeue () {
+    return this.items.shift();
+  }
+}
+
+let student = new Queue([2,4,5]);
+student.enqueue(4);
+student.dequeue();
