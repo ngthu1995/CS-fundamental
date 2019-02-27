@@ -171,32 +171,30 @@ print() {
   console.log(this.storage)
 }  
 
-add(publisher, publicationDate, arr) {
-    let key = publisher + publicationDate;
+add(key, data) {
     let index = hash(key, this.storageLimit);
     console.log(index);
-    let data = [publisher, publicationDate, arr];
     if (this.storage[index] === undefined) {
-        this.storage[index] = (data);
+        this.storage[index] = {data};
     }
   
   
 }
 
-search(publisher, publicationDate) {
-    let key = publisher + publicationDate;
+search(key) {
     let index = hash(key, this.storageLimit);
     let result = [];
     console.log(this.storage[index][2]);
     if (!this.storage[index]) { 
         return 'No results were found.' 
     } else {
-      return this.storage[index][2];
+      return this.storage[index];
     }
   }
 }
 
 var abc = new Newspaper();
-abc.add('times', '1995', ['Love']);
-abc.add('post', '1996', ['Life']);
+abc.add('times', {year: '1995', title: 'Love'});
+console.log(abc.search('times'));
+
 
