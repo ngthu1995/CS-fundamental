@@ -7,9 +7,9 @@
 4. Depth-first-search: starts at the root and explore as far as possible along each branch before backtracking.
    Breadth-first-search: BFS starts at the tree root and explore the neighbor nodes first, before moving to the next level neighbors.
 
-5. An undirected, cyclic, unweighted graph means that they connect to each other, which indicates the end and start location, but don't form loop and do not carry the cost of travel between Nodes.
+5. An undirected, cyclic, unweighted graph means that there is a connection between 2 nodes, but don't form loop and do not carry the cost of travel between Nodes.
 
-6. A binary search tree is directed, a-cyclic and unweighted.
+6. A binary search tree is directed, cyclic and unweighted.
 
 
 
@@ -29,11 +29,10 @@ function search (nodeRoot, item) {
 }
 
 2. 
-function findDistance (root, n1, n2) {
-  if (root === null || n1 === n2) {
-    return -1;
-  } 
-  
+function findDistance(root, n1, n2){
+  if (root === null || n1 === n2){
+    return 0;
+  }
   distance.left = findDistance(root.left, n1, n2);
   distance.right = findDistance(root.right, n1, n2);
 
@@ -53,7 +52,7 @@ function findDistance (root, n1, n2) {
     if (root == n1 || n2){
       return 1;
     }
-  } else {
+    } else {
       return max(distance.left, distance.right) + 1;
-  }
+    }
 }
