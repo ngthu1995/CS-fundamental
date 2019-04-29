@@ -171,7 +171,8 @@ print() {
   console.log(this.storage)
 }  
 
-add(key, data) {
+add(publisher, publicationDate, data) {
+    let key = publisher + publicationDate;
     let index = hash(key, this.storageLimit);
     console.log(index);
     if (this.storage[index] === undefined) {
@@ -181,10 +182,11 @@ add(key, data) {
   
 }
 
-search(key) {
+search(publisher, publicationDate) {
+   let key = publisher + publicationDate;
     let index = hash(key, this.storageLimit);
     let result = [];
-    console.log(this.storage[index][2]);
+    // console.log(this.storage[index][2]);
     if (!this.storage[index]) { 
         return 'No results were found.' 
     } else {
@@ -194,7 +196,7 @@ search(key) {
 }
 
 var abc = new Newspaper();
-abc.add('times', {year: '1995', title: 'Love'});
+abc.add('times', "04/29/2019" , {year: '1995', title: 'Love'});
 console.log(abc.search('times'));
 
 
