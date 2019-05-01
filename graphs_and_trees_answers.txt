@@ -67,11 +67,11 @@ BinarySearchTree.prototype.findLowestCommonAncestor = function(root, n1, n2) {
     }
 
     else if (n1 < lca && n2 < lca) {
-      return this.findCommonAncestor(root.left, n1, n2);
+      return this.findLowestCommonAncestor(root.left, n1, n2);
     }
 
     else if (n1 > lca && n2 > lca) {
-      return this.findCommonAncestor(root.right, n1, n2);
+      return this.findLowestCommonAncestor(root.right, n1, n2);
     }
 
     return lca;
