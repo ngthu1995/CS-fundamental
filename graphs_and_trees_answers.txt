@@ -48,48 +48,100 @@ function BinarySearchTree(root) {
 
 BinarySearchTree.prototype.findDistanceBetweenTwoNodes = function(root, n1, n2) {
 
-    var lca = this.findLowestCommonAncestor(root, n1, n2);
-    var distanceNode1ToRoot = this.countDistanceToRoot(lca, n1);
-    var distanceNode2ToRoot = this.countDistanceToRoot(lca, n2);
-    var distanceRootToAncestor = this.countDistanceToRoot(root, lca);
-    var totalDistance = (distanceNode1ToRoot + distanceNode2ToRoot) - (2 * distanceRootToAncestor);
-    return ('Total distance between node ' + n1 + ' and node ' + n2 + ' is ' + totalDistance);
+  var lca = this.findLowestCommonAncestor(root, n1, n2);
+  var distanceNode1ToRoot = this.countCommonAncestors(lca, n1);
+  var distanceNode2ToRoot = this.countCommonAncestors(lca, n2);
+  var distanceRootToAncestor = this.countCommonAncestors(root, lca);
+  var totalDistance = (distanceNode1ToRoot + distanceNode2ToRoot) - (2 * distanceRootToAncestor);
+  return ('Total distance between node ' + n1 + ' and node ' + n2 + ' is ' + totalDistance);
 
 }
 
 BinarySearchTree.prototype.findLowestCommonAncestor = function(root, n1, n2) {
-    if (!root) return;
 
-    var lca = root.data;
+  var lca = root.data;
 
-    else if (n1 === lca || n2 === lca) {
-      return lca;
-    }
-
-    else if (n1 < lca && n2 < lca) {
-      return this.findLowestCommonAncestor(root.left, n1, n2);
-    }
-
-    else if (n1 > lca && n2 > lca) {
-      return this.findLowestCommonAncestor(root.right, n1, n2);
-    }
-
+  if (!root) 
+    {return;}
+  else if (n1 === lca || n2 === lca) {
     return lca;
+  }
+
+  if (n1 < lca && n2 < lca) {
+    return this.findLowestCommonAncestor(root.left, n1, n2);
+  }
+
+  if (n1 > lca && n2 > lca) {
+    return this.findLowestCommonAncestor(root.right, n1, n2);
+  }
+
+		return lca;
 }
 
-BinarySearchTree.prototype.countDistanceToRoot = function(root, data) {
+BinarySearchTree.prototype.countCommonAncestors = function(root, data) {
+
   var thisNode = this.root;
 
   var nodeCount = 0;
 
   while (thisNode) {
-
     if (data === thisNode.data) {
       return nodeCount;
     }
-
     thisNode = data < thisNode.data ? thisNode.left : thisNode.right;
-
     nodeCount++;
   }
 }
+
+BinarySearchTree.prototype.getRootNode = function(){
+
+	return this.root;
+
+}
+
+BinarySearchTree.prototype.insert = function(data){
+
+  var newNode = new Node(data);
+
+  if (this.root === null) {
+    this.root = newNode;
+    this.length++;
+  } else {
+    this.insertNode(this.root, newNode);
+  }
+
+}
+
+BinarySearchTree.prototype.insertNode = function(node, newNode) {
+
+  if (newNode.data < node.data) {
+    if (node.left === null) {
+      node.left = newNode;
+      this.length++;
+    } else {
+      this.insertNode(node.left, newNode);
+    }
+  } else {
+    if (node.right === null) {
+      node.right = newNode;
+      this.length++;
+    } else {
+      this.insertNode(node.right, newNode);
+    }
+  }
+
+}
+
+var BST = new BinarySearchTree();
+
+BST.insert(8);
+BST.insert(10);
+BST.insert(3);
+BST.insert(14);
+BST.insert(6);
+BST.insert(1);
+BST.insert(7);
+
+var root = BST.getRootNode();
+BST.findDistanceBetweenTwoNodes(root, 8, 7);
+BST.findDistanceBetweenTwoNodes(root, 8, 14);
